@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Main page{% endblock title %}
+
+        {% block page_content %}
+            <p>GuestBook Filton</p>
+
+            <img src="/assets/image/filton.jpg">
+
+            {% if logiran %}
+                <h3>Hello, {{ user.nickname() }}!</h3>
+                <p>Insert something and click ok, or go on guestbook!</p>
+
+                    <form method="post" action="/guestbook">
+                        <input name="vnos">
+
+                        <button>OK</button>
+                    </form>
+
+                    <p><a href="{{ logout_url }}">Odjava</a></p>
+                    {% else %}
+                        <h3>Hello anonimus!</h3>
+
+                        <p>Please, login in: <a href="{{ login_url }}">Login</a></p>
+                    {% endif %}
+        {% endblock page_content %}
